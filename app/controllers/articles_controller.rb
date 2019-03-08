@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    authorize @articles
   end
 
   def show
@@ -12,6 +13,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = current_user.articles.new
+    authorize @article
   end
 
   # GET /articles/1/edit
@@ -22,6 +24,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = current_user.articles.new(article_params)
+    authorize @article
 
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
@@ -32,24 +35,22 @@ class ArticlesController < ApplicationController
 
   def update
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-        format.json { render :show, status: :ok, location: @article }
+        redirect_to @article, notice: 'Article was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        render :edit
       end
   end
 
   def destroy
     @article.destroy
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-      format.json { head :no_content }
+    redirect_to articles_url, notice: 'Article was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+      authorize @article
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
