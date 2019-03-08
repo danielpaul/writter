@@ -39,7 +39,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 
 gem "pundit"
-gem "timecop"
 
 gem "faker"
 
