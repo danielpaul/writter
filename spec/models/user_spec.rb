@@ -15,5 +15,6 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
   it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
 
-  #it "returns a user's full name as a string"
+  it { should have_many(:articles) }
+
 end
