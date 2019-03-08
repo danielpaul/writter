@@ -2,6 +2,9 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
+  <%= resource.inspect %>
+  <%= resource.errors.inspect %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: false, autocomplete: "email" %>
