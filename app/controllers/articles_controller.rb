@@ -21,7 +21,6 @@ class ArticlesController < ApplicationController
   end
 
   # POST /articles
-  # POST /articles.json
   def create
     @article = current_user.articles.new(article_params)
     authorize @article
