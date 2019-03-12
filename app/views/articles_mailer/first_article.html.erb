@@ -1,0 +1,9 @@
+
+<h1>Congrats <%= @user.first_name %></h1>
+<p>
+  You have successfully published your first article!<br>
+</p>
+<p>
+  To view the article, just follow here:
+  <%= link_to 'click here', article_url(@article) %>
+</p>
