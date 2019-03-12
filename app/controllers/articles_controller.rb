@@ -28,7 +28,6 @@ class ArticlesController < ApplicationController
 
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
-        ArticlesMailer.with(user: current_user, article: article_url(@article)).first_article.deliver_now
     else
       render :new
     end
