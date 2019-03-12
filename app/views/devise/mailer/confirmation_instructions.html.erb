@@ -1,5 +1,8 @@
 <p>Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<P>Yes, we know.</p>
+<p>An email to confirm an email.</p>
+
+<p>Please validate your email address in order to get started using Writter:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
