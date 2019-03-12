@@ -7,7 +7,7 @@ class Article < ApplicationRecord
 
 
   def send_first_article_email
-    if user.articles.count == 1
+    if user.articles.count == 1 || true
       ArticlesMailer.first_article(self.id).deliver_later
     end
   end
