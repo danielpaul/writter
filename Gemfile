@@ -55,6 +55,8 @@ group :development do
 
   gem "letter_opener"
 
+  gem 'bullet'
+
 end
 
 group :test do
