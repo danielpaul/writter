@@ -1,25 +1,26 @@
-<h2>Log in</h2>
+<body>
+<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f| %>
 
-  <%= resource.inspect %>
-  <%= resource.errors.inspect %>
+  <!--<%= resource.inspect %>
+  <%= resource.errors.inspect %>-->
 
-  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: false, autocomplete: "email" %>
-  </div>
+    <%= f.email_field :email, autofocus: false, autocomplete: "email"%>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password%><br />
+    <%= f.password_field :password, autocomplete: "current-password"%>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+  <div class="checkbox mb-3">
+    <label>
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
-    </div>
+    </label>
+  </div>
   <% end %>
 
   <div class="actions">
@@ -27,4 +28,7 @@
   </div>
 <% end %>
 
+
 <%= render "devise/shared/links" %>
+<p class="mt-5 mb-3 text-muted">&copy Writter 2019</p>
+</body>
