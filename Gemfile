@@ -64,6 +64,9 @@ group :development do
 
   gem 'bullet'
 
+  gem 'jquery-rails'
+
+
 end
 
 group :test do
