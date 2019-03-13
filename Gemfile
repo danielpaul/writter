@@ -41,6 +41,8 @@ gem 'pundit'
 
 gem 'sidekiq'
 
+gem 'activeadmin'
+
 gem 'strong_migrations'
 
 group :development, :test do
