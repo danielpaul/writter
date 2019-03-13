@@ -7,10 +7,9 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Recent Users" do
           table_for User.order("id desc").limit(5).each do |_user|
-            column(:username)    { |user| link_to(user.username, admin_user_path(user)) }
-            column(:first_name)    { |user| link_to(user.first_name, admin_user_path(user)) }
-            column(:last_name)    { |user| link_to(user.last_name, admin_user_path(user)) }
+            column(:full_name)    { |user| link_to(user.first_name + " " + user.last_name, admin_user_path(user)) }
             column(:email)    { |user| link_to(user.email, admin_user_path(user)) }
+            column(:created_at)    { |user| link_to(user.created_at, admin_user_path(user)) }
           end
         end
       end
@@ -20,8 +19,8 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Articles" do
           table_for Article.order("id desc").limit(5).each do |_article|
             column(:title)    { |article| link_to(article.title, admin_article_path(article)) }
-            column(:content)    { |article| link_to(article.text, admin_article_path(article)) }
             column(:author)    { |article| link_to(article.user_id, admin_user_path(article.user_id)) }
+            column(:status) { status_tag 'active', class: 'important', label: 'published'}
           end
         end
       end
