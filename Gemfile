@@ -37,7 +37,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
-gem "pundit"
+gem 'pundit'
+
+gem 'sidekiq'
+
+gem 'activeadmin'
 
 gem 'strong_migrations'
 
