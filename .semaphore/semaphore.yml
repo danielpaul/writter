@@ -71,8 +71,8 @@ blocks:
           # See https://docs.semaphoreci.com/article/54-toolbox-reference#sem-service
           - sem-service start postgres
           - sem-version ruby 2.6.0
+          - RAILS_ENV=test
           - bundle install --deployment --path vendor/bundle
-          - createdb -U postgres -h 0.0.0.0 writter_development
           - bundle exec rake db:setup
 
       jobs:
