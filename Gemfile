@@ -53,8 +53,8 @@ group :development, :test do
   # a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
-  gem 'rubocop', require: false
   gem 'brakeman'
+  gem 'rubocop', require: false
 end
 
 group :development do
