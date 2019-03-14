@@ -23,6 +23,9 @@ agent:
 blocks:
   - name: Setup
     task:
+      env_vars:
+        - name: RAILS_ENV
+          value: test
       jobs:
         - name: bundle
           commands:
@@ -72,7 +75,7 @@ blocks:
           - sem-service start postgres
           - sem-version ruby 2.6.0
           - bundle install --deployment --path vendor/bundle
-          - bundle exec rake db:setup
+          - bundle exec rake db:create
 
       jobs:
       - name: RSpec - model tests
