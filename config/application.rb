@@ -18,3 +18,9 @@ module Writter
     # the framework and any gems in your application.
   end
 end
+
+module YourApp
+  class Application < Rails::Application
+    config.middleware.use Rack::Deflater
+  end
+end
