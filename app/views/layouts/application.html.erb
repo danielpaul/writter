@@ -3,11 +3,13 @@
   <head>
     <%= render "layouts/header" %>
   </head>
-
-  <body class="text-center">
+  <body>
     <%= render "layouts/navbar" %>
     <!--<%= flash %>-->
-    <%= yield %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
 
     <%= render "layouts/footer" %>
   </body>
