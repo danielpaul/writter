@@ -1,43 +1,36 @@
-<h2>Sign up</h2>
+<body class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-devise my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign Up</h5>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-devise"}) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "off" %>
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "off", class: "form-control", placeholder: "First Name" %>
+
+                <%= f.text_field :last_name, autofocus: false, autocomplete: "off", class: "form-control", placeholder: "Last Name" %>
+
+                <%= f.text_field :username, autofocus: false, autocomplete: "off", class: "form-control", placeholder: "Username" %>
+
+                <%= f.email_field :email, autofocus: false, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm Password" %>
+                <br />
+                <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+
+              <% end %>
+
+              <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: false, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: false, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: false, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>
