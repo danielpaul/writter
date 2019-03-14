@@ -1,0 +1,6 @@
+%p
+  Welcome #{@email}!
+%p Yes, we know.
+%p An email to confirm an email.
+%p Please validate your email address in order to get started using Writter:
+%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
