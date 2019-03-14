@@ -1,5 +1,7 @@
 class Article < ApplicationRecord
   belongs_to :user
+  include Commentable
+  has_many :comments, as: :commentable
 
   validates :title, :text, :user_id, presence: true
 
