@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   # Include default devise modules. Others available are:
@@ -7,5 +9,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :last_name, :username, presence: true
-  validates :username, :email, uniqueness: {case_sensitive: false}
+  validates :username, :email, uniqueness: { case_sensitive: false }
 end

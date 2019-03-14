@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Article < ApplicationRecord
   belongs_to :user
 
@@ -5,10 +7,7 @@ class Article < ApplicationRecord
 
   after_create :send_first_article_email
 
-
   def send_first_article_email
-    if user.articles.count == 1
-      ArticlesMailer.first_article(self.id).deliver_later
-    end
+    ArticlesMailer.first_article(id).deliver_later if user.articles.count == 1
   end
 end

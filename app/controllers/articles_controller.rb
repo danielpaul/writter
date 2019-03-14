@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_article, only: %i[show edit update destroy]
   after_action :verify_authorized, except: :index
 
   def index
@@ -8,8 +10,7 @@ class ArticlesController < ApplicationController
     authorize @articles
   end
 
-  def show
-  end
+  def show; end
 
   # GET /articles/new
   def new
@@ -18,8 +19,7 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /articles
   def create
@@ -34,11 +34,11 @@ class ArticlesController < ApplicationController
   end
 
   def update
-      if @article.update(article_params)
-        redirect_to @article, notice: 'Article was successfully updated.'
-      else
-        render :edit
-      end
+    if @article.update(article_params)
+      redirect_to @article, notice: 'Article was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -47,14 +47,15 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-      authorize @article
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def article_params
-      params.require(:article).permit(:title, :text)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+    authorize @article
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def article_params
+    params.require(:article).permit(:title, :text)
+  end
 end

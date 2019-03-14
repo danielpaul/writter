@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
-  it "is valid with a username, first name, last name, email, and password" do
+  it 'is valid with a username, first name, last name, email, and password' do
     user = FactoryBot.build(:user)
     expect(user).to be_valid
   end
@@ -16,5 +17,4 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
 
   it { should have_many(:articles) }
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddingUserColumns < ActiveRecord::Migration[5.2]
   def change
     add_column :users, :username, :string, index: true, allow_blank: false, allow_nil: false
