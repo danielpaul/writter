@@ -4,7 +4,7 @@ version: v1.0
 # Name your pipeline. In case you connect multiple pipelines with promotions,
 # the name will help you differentiate between, for example, a CI build phase
 # and delivery phases.
-name: Writter - Rails 5 app
+name: Writter
 
 # An agent defines the environment in which your code runs.
 # It is a combination of one of available machine types and operating
@@ -23,9 +23,6 @@ agent:
 blocks:
   - name: Setup
     task:
-      env_vars:
-        - name: RAILS_ENV
-          value: test
       jobs:
         - name: bundle
           commands:
@@ -75,7 +72,7 @@ blocks:
           - sem-service start postgres
           - sem-version ruby 2.6.0
           - bundle install --deployment --path vendor/bundle
-          - bundle exec rake db:create
+          - bundle exec rake db:setup
 
       jobs:
       - name: RSpec - model tests
