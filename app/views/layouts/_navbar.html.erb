@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">All Articles<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/articles">All Articles<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">My Articles</a>
@@ -19,10 +19,10 @@
           My Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'Sign out', '/users/sign_out', html: {class: "dropdown-item"}%>
+          <a class="dropdown-item" href="/users/sign_out">Sign out</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Reset password</a>
-          <a class="dropdown-item" href="#">Resend confirmation email</a>
+          <a class="dropdown-item" href="/users/password/new">Reset password</a>
+          <a class="dropdown-item" href="/users/confirmation/new">Resend confirmation email</a>
         </div>
       </li>
     </ul>
