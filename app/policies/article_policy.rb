@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ArticlePolicy < ApplicationPolicy
   def index?
     true
@@ -20,4 +18,5 @@ class ArticlePolicy < ApplicationPolicy
   def show?
     true
   end
+
 end

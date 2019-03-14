@@ -37,3 +37,7 @@ Naming/FileName:
 
 Rails:
   Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  EnforcedStyle: never
