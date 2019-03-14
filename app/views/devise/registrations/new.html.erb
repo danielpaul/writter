@@ -1,11 +1,6 @@
 <body class="text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-devise my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">Sign Up</h5>
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-devise"}) do |f| %>
+              <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
                 <%= render "devise/shared/error_messages", resource: resource %>
 
                 <%= f.text_field :first_name, autofocus: true, autocomplete: "off", class: "form-control", placeholder: "First Name" %>
@@ -23,14 +18,8 @@
 
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm Password" %>
                 <br />
-                <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+                <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+                <%= render "devise/shared/links" %>
 
               <% end %>
-
-              <%= render "devise/shared/links" %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
