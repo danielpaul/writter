@@ -17,3 +17,12 @@ FactoryBot.define do
     text { Faker::Name.last_name }
   end
 end
+
+FactoryBot.define do
+  factory :comment do
+    user
+    article
+    association :commentable, factory: :article
+    body { Faker::String.random }
+  end
+end
