@@ -5,7 +5,8 @@
     = render "layouts/header"
   %body
     = render "layouts/navbar"
-    / <haml_loud> flash </haml_loud>
-    .container
-      = yield
+    -# / <haml_loud> flash </haml_loud>
+
+    = yield
+
     = render "layouts/footer"
