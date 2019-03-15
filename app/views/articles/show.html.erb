@@ -10,12 +10,8 @@
   <%= @article.text %>
 </p>
 
-<h3>Comments</h3>
-<% @article.comments.each do |comment| %>
-  <div class="well">
-    <%= comment.body %>
-  </div>
-<% end %>
+<%= render partial: "comments/comments", locals: {commentable: @article} %>
+<%= render partial: "comments/form", locals: {commentable: @article} %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
