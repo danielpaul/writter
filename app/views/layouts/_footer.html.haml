@@ -2,8 +2,8 @@
   .container
     .row.mb-4.justify-content-center
       .col-auto
-        %a{:href => "index.html"}
-          %img.icon.icon-lg{:alt => "Writter", :src => "assets/img/logo.svg"}
+        = link_to root_path do
+          = image_tag 'logo/logo-white.svg', alt: 'Writter', class: 'icon'
     .row.mb-4
       .col
         %ul.nav.justify-content-center

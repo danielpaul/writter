@@ -1,8 +1,8 @@
 .navbar-container
   %nav.navbar.navbar-expand-lg.navbar-light{"data-sticky" => "top"}
     .container
-      %a.navbar-brand{:href => "index.html"}
-        Writter
+      = link_to root_path, class: 'navbar-brand' do
+        = image_tag 'logo/logo.svg', alt: 'Writter', class: 'icon'
 
       .d-flex.align-items-center.order-lg-3
         .py-2.py-lg-0.pr-2
