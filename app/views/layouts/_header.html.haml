@@ -1,5 +1,5 @@
 .navbar-container
-  %nav.navbar.navbar-expand-lg.navbar-light{"data-sticky" => "top"}
+  %nav.navbar.navbar-expand-lg.navbar-light{'data-sticky': 'top'}
     .container
       = link_to root_path, class: 'navbar-brand' do
         = image_tag 'logo/logo.svg', alt: 'Writter', class: 'icon'
@@ -8,29 +8,6 @@
         .py-2.py-lg-0.pr-2
           %ul.navbar-nav
             %li.nav-item
-              %a.nav-link{:href => "#"} Sign in
+              = link_to 'Sign in', new_user_session_path, class: 'nav-link'
 
-        %a.btn.btn-primary.ml-lg-3{:href => "#"} Get Started
-
-
--# %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
--#   .container
--#     %a.navbar-brand{:href => "#"} Writter
--#     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
--#       %span.navbar-toggler-icon
--#     #navbarSupportedContent.collapse.navbar-collapse
--#       %ul.navbar-nav.mr-auto
--#         %li.nav-item.active
--#           %a.nav-link{:href => "/articles"}
--#             All Articles
--#             %span.sr-only (current)
--#         %li.nav-item
--#           %a.nav-link{:href => "#"} My Articles
--#         %li.nav-item.dropdown
--#           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
--#             My Account
--#           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
--#             %a.dropdown-item{:href => "/users/sign_out"} Sign out
--#             .dropdown-divider
--#             %a.dropdown-item{:href => "/users/password/new"} Reset password
--#             %a.dropdown-item{:href => "/users/confirmation/new"} Resend confirmation email
+        = link_to 'Get Started', new_user_registration_path, class: 'btn btn-primary ml-1'
