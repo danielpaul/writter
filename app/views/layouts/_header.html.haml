@@ -1,5 +1,36 @@
-%title Writter
-= csrf_meta_tags
-= csp_meta_tag
-= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+.navbar-container
+  %nav.navbar.navbar-expand-lg.navbar-light{"data-sticky" => "top"}
+    .container
+      %a.navbar-brand{:href => "index.html"}
+        Writter
+
+      .d-flex.align-items-center.order-lg-3
+        .py-2.py-lg-0.pr-2
+          %ul.navbar-nav
+            %li.nav-item
+              %a.nav-link{:href => "#"} Sign in
+
+        %a.btn.btn-primary.ml-lg-3{:href => "#"} Get Started
+
+
+-# %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+-#   .container
+-#     %a.navbar-brand{:href => "#"} Writter
+-#     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+-#       %span.navbar-toggler-icon
+-#     #navbarSupportedContent.collapse.navbar-collapse
+-#       %ul.navbar-nav.mr-auto
+-#         %li.nav-item.active
+-#           %a.nav-link{:href => "/articles"}
+-#             All Articles
+-#             %span.sr-only (current)
+-#         %li.nav-item
+-#           %a.nav-link{:href => "#"} My Articles
+-#         %li.nav-item.dropdown
+-#           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+-#             My Account
+-#           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+-#             %a.dropdown-item{:href => "/users/sign_out"} Sign out
+-#             .dropdown-divider
+-#             %a.dropdown-item{:href => "/users/password/new"} Reset password
+-#             %a.dropdown-item{:href => "/users/confirmation/new"} Resend confirmation email

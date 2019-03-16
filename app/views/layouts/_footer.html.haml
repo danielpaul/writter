@@ -1,13 +1,38 @@
-/ Footer
-%footer.page-footer.font-small.white
-  / Copyright
-  .footer-copyright.text-center.py-3
-    © 2018 Copyright:
-    %a Writter.co
-    = link_to 'About', page_path('about')
-    |
-    = link_to 'Terms', page_path('terms')
-    |
-    = link_to 'Privacy Policy', page_path('privacy')
-  / Copyright
-/ Footer
+%footer.pb-5.bg-primary-3.text-light
+  .container
+    .row.mb-4.justify-content-center
+      .col-auto
+        %a{:href => "index.html"}
+          %img.icon.icon-lg{:alt => "Writter", :src => "assets/img/logo.svg"}
+    .row.mb-4
+      .col
+        %ul.nav.justify-content-center
+          %li.nav-item
+            = link_to 'About', page_path('about'), class: 'nav-link'
+          %li.nav-item
+            = link_to 'Terms', page_path('terms'), class: 'nav-link'
+          %li.nav-item
+            = link_to 'Privacy Policy', page_path('privacy'), class: 'nav-link'
+          %li.nav-item
+            %a.nav-link{:href => "#"} Portfolio
+          %li.nav-item
+            %a.nav-link{:href => "#"} Elements
+
+    .row.justify-content-center.text-center
+      .col-xl-10
+        %small.text-muted
+          ©2019 All Rights Reserved. Your Brand® is a registered trademark of Your Company.
+
+
+
+%a.btn.back-to-top.btn-primary.btn-round{"data-aos" => "fade-up", "data-aos-anchor" => "section:last-of-type", "data-aos-mirror" => "true", "data-aos-once" => "false", "data-smooth-scroll" => "", :href => "#"}
+  %svg.icon{:height => "24px", :version => "1.1", :viewbox => "0 0 24 24", :width => "24px", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+    %title Icon For Arrow-up
+    %g{:fill => "none", "fill-rule" => "evenodd", :stroke => "none", "stroke-width" => "1"}
+      %polygon{:opacity => "0", :points => "0 0 24 0 24 24 0 24"}
+      %rect{:fill => "#000000", :height => "14", :rx => "1", :width => "2", :x => "11", :y => "5"}
+      %path{:d => "M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z", :fill => "#000000", "fill-rule" => "nonzero"}
+
+
+
+= javascript_include_tag 'application_footer', 'data-turbolinks-track': 'reload'
