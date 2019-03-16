@@ -8,7 +8,7 @@
 
     .form-group
       = f.label :email
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'you@example.com', tabindex: 1
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'you@example.com', tabindex: 1, required: true
 
     .form-group
       .row
@@ -18,7 +18,7 @@
           = link_to "Forgot password?", new_password_path(resource_name), class: 'form-text small text-muted'
 
       .input-group.input-group-merge
-        = f.password_field :password, autocomplete: "password", class: 'form-control', placeholder: 'Enter your password', tabindex: 2
+        = f.password_field :password, autocomplete: "password", class: 'form-control', placeholder: 'Enter your password', tabindex: 2, required: true
 
     - if devise_mapping.rememberable?
       .mb-3
