@@ -1,10 +1,25 @@
-%h2 Resend unlock instructions
-= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Resend unlock instructions"
-= render "devise/shared/links"
+.text-center.mb-4
+  %h1.mb-1 Resend unlock instructions
+
+.text-left
+
+  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+    = render partial: "layouts/flash_alert"
+
+    .form-group
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'you@example.com', tabindex: 1, required: true
+
+    = f.submit "Resend unlock instructions", class: 'btn btn-lg btn-block btn-primary mb-3'
+
+    .text-center
+      %small.text-muted.text-center
+        Don't have an account yet?
+        = succeed "." do
+          = link_to "Sign up", new_registration_path(resource_name)
+
+        %hr
+
+        - if devise_mapping.confirmable? && controller_name != 'confirmations'
+          = link_to "Didn't receive confirmation instructions?", new_user_confirmation_path(resource_name)
+          %br
