@@ -1,8 +1,23 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    = render "layouts/header"
-  %body.text-center
-    / <haml_loud> flash </haml_loud>
-    = yield
+    = render 'layouts/head'
+
+  %body
+
+    %section.row.no-gutters.min-vh-100.p-0
+      .col-lg-4.bg-primary-3.d-flex.justify-content-end
+        = image_tag 'https://source.unsplash.com/collection/962383', class: 'bg-image'
+
+      .col.px-5.position-relative.d-flex.align-items-center
+        .row.justify-content-center.w-100
+          .col-md-8.col-lg-7.col-xl-6
+
+            .text-center
+              = link_to root_path, class: 'navbar-brand mb-3' do
+                = image_tag 'logo/logo.svg', alt: 'Writter', class: 'icon'
+
+            = yield
+
+
+    = render "layouts/footer_scripts"

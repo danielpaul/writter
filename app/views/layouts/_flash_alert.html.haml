@@ -1,0 +1,18 @@
+- if flash_messages_display && flash_messages_display.any?
+
+  - alert_keys = flash_messages_display.keys
+  - if alert_keys.include?('success')
+    - alert_style = 'success'
+  - elsif alert_keys.include?('notice')
+    - alert_style = 'secondary'
+  - elsif alert_keys.include?('alert')
+    - alert_style = 'warning'
+  - else
+    - alert_style = 'danger'
+
+  .alert.alert-dismissible{role: "alert", class: "alert-#{alert_style}"}
+    %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+      %span{"aria-hidden" => "true"} &times;
+    - flash_messages_display.each do |key, value|
+      %p.m-0{class: "alert_#{key}"}
+        = value

@@ -1,5 +1,38 @@
-%title Writter
-= csrf_meta_tags
-= csp_meta_tag
-= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+.navbar-container
+  %nav.navbar.navbar-expand-lg.navbar-light{'data-sticky': 'top'}
+    .container
+      = link_to root_path, class: 'navbar-brand' do
+        = image_tag 'logo/logo.svg', alt: 'Writter', class: 'icon'
+
+      - if user_signed_in?
+
+        .d-flex.align-items-center.order-lg-3
+          .dropdown.ml-2
+            = image_tag current_user.avatar_url, class: 'avatar avatar-sm dropdown-toggle', data: {toggle: 'dropdown'}
+
+            .dropdown-menu.dropdown-menu-right.dropdown-content
+              %a.dropdown-item{:href => "#"} Action
+              %a.dropdown-item{:href => "#"} Another action
+              %a.dropdown-item{:href => "#"} Something else here
+          .ml-2
+            %button.navbar-toggler{"aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+              %svg.icon{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                %path{:d => "M3 17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17V17C21 16.4477 20.5523 16 20 16H4C3.44772 16 3 16.4477 3 17V17ZM3 12C3 12.5523 3.44772 13 4 13H20C20.5523 13 21 12.5523 21 12V12C21 11.4477 20.5523 11 20 11H4C3.44772 11 3 11.4477 3 12V12ZM4 6C3.44772 6 3 6.44772 3 7V7C3 7.55228 3.44772 8 4 8H20C20.5523 8 21 7.55228 21 7V7C21 6.44772 20.5523 6 20 6H4Z", :fill => "#212529"}
+
+        .collapse.navbar-collapse.justify-content-end.order-lg-2
+          .py-2.py-lg-0
+            %ul.navbar-nav
+              %li.nav-item
+                %a.nav-link{:href => "#"} My Writing
+              %li.nav-item
+                %a.btn.btn-outline-primary{:href => "#"} Write
+
+      - else
+
+        .d-flex.align-items-center.order-lg-3
+          .py-2.py-lg-0.pr-2
+            %ul.navbar-nav
+              %li.nav-item
+                = link_to 'Sign in', new_user_session_path, class: 'nav-link'
+
+          = link_to 'Get Started', new_user_registration_path, class: 'btn btn-primary ml-1'
