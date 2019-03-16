@@ -1,0 +1,55 @@
+.text-center.mb-4
+  %h1.mb-1 Get Started.
+  %span Welcome to the best place for your writing.
+
+.text-left
+
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+
+    .form-row.form-group
+      .col
+        = f.label :first_name
+        = f.text_field :first_name, autofocus: false, autocomplete: 'first-name', class: 'form-control', placeholder: 'First Name', required: true
+
+      .col
+        = f.label :last_name
+        = f.text_field :last_name, autocomplete: 'last-name', class: 'form-control', placeholder: 'Last Name', required: true
+
+    .form-group
+      = f.label :username
+      = f.text_field :username, autocomplete: 'username', class: 'form-control', placeholder: 'username', required: true
+
+    .form-group
+      = f.label :email
+      = f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: 'you@example.com', required: true
+
+
+    .form-row.form-group
+      .col
+        = f.label :password
+        = f.password_field :password, autocomplete: 'new-password', class: 'form-control', placeholder: 'Password', minlength: @minimum_password_length, required: true
+        - if @minimum_password_length
+          %small.text-muted
+            Minimum #{@minimum_password_length} characters
+      .col
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control', placeholder: 'Password Confirmation', minlength: @minimum_password_length, required: true
+
+    .form-group
+      = f.submit "Sign up", class: 'btn btn-lg btn-block btn-primary mb-3'
+
+    .text-center
+      %small.text-muted
+        By clicking 'Sign up' you agree to our
+        = link_to 'Terms of Service', page_path('terms'), target: :blank
+        and
+        = succeed "." do
+          = link_to 'Privacy Policy', page_path('privacy'), target: :blank
+
+    %hr
+
+    .text-center.text-small.text-muted
+      Already have an account?
+      = succeed "." do
+        = link_to "Sign in", new_session_path(resource_name)
