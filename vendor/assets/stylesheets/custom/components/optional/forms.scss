@@ -5,9 +5,16 @@
 //
 
 .form-control{
-  transition: background-color $transition-time ease, border-color $transition-time ease, opacity $transition-time ease;
+  transition: all $transition-time-slow ease;
   &:disabled{
     opacity: .5;
+  }
+  &:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
   }
 }
 
@@ -15,9 +22,9 @@
   label{
     font-size: $font-size-sm;
     font-weight: $font-weight-bold;
-    color: $text-muted;
+    // color: $text-muted;
     &.custom-control-label{
-      color: $body-color;
+      // color: $body-color;
       &:before, &:after{
         top: 0.125rem;
       }

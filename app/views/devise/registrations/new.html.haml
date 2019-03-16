@@ -17,8 +17,12 @@
         = f.text_field :last_name, autocomplete: 'last-name', class: 'form-control', placeholder: 'Last Name', required: true
 
     .form-group
+      = f.label :username
+      = f.text_field :username, autocomplete: 'username', class: 'form-control', placeholder: 'username', required: true
+
+    .form-group
       = f.label :email
-      = f.email_field :email, autocomplete: "email", class: 'form-control', placeholder: 'you@example.com', required: true
+      = f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: 'you@example.com', required: true
 
 
     .form-row.form-group

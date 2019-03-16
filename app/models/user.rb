@@ -8,4 +8,11 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :username, presence: true
   validates :username, :email, uniqueness: {case_sensitive: false}
+
+
+  def avatar_url
+    gravatar_id = Digest::MD5::hexdigest(self.email.downcase)
+    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?d=mp"
+  end
+
 end
