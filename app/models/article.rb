@@ -1,7 +1,6 @@
 class Article < ApplicationRecord
   include Commentable
   belongs_to :user
-  has_many :comments, as: :commentable
 
   validates :title, :text, :user_id, presence: true
 
