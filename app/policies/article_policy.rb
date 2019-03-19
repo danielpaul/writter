@@ -20,7 +20,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def like?
-    create?
+    show?
   end
 
 end

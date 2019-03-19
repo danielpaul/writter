@@ -47,8 +47,7 @@ class ArticlesController < ApplicationController
   end
 
   def like
-    @article = Article.find(params[:id])
-    authorize @article
+    set_article
     if current_user.voted_for? @article
       @article.unliked_by current_user
     else
