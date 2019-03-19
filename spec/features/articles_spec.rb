@@ -5,6 +5,7 @@ describe "GET '/'" do
     visit '/'
     expect(page.body).to include("Articles")
   end
+
   it 'shows new article button' do
     visit '/'
     expect(page.body).to include("New Article")
