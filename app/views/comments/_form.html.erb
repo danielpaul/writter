@@ -5,4 +5,6 @@
     </div>
   <%= f.submit class: "btn btn-primary" %>
   <% end %>
-<% end %>
+<% else %>
+  <h4 class="h3 mb-3 font-weight-normal">Please <%= link_to "login", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> to comment.</h4>
+  <% end %>
