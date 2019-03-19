@@ -21,8 +21,7 @@ end
 FactoryBot.define do
   factory :comment do
     user
-    article
     association :commentable, factory: :article
-    body { Faker::String.random }
+    body { Faker::Quotes::Shakespeare.hamlet_quote }
   end
 end

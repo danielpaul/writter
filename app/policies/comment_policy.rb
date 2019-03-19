@@ -12,6 +12,6 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? && user == comment.user || user == @commentable.user
+    user.present? && (user == comment.user || user == @commentable.user)
   end
 end

@@ -2,6 +2,7 @@
 <% commentable.comments.each do |comment| %>
   <div class="well">
     <%= comment.body %>
+    <%= link_to 'Delete', [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
     <% if current_user == comment.user %>
       <%= link_to 'Delete', [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
