@@ -42,6 +42,9 @@
             21
 
         %h1 #{@article.title}
+        = link_to like_article_path(@article), method: :put do
+          Like
+          \#{@article.get_likes.size}
 
         .d-flex.align-items-center
           -# TODO: link to user profile

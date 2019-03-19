@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :articles
+  resources :articles do
+    member do
+      put "like", to: "articles#like"
+    end
+  end
 
   root to: 'articles#index'
 

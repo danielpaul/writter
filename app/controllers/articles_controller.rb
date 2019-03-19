@@ -46,6 +46,17 @@ class ArticlesController < ApplicationController
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
   end
 
+  def like
+    @article = Article.find(params[:id])
+    authorize @article
+    if current_user.voted_for? @article
+      @article.unliked_by current_user
+    else
+      @article.liked_by current_user
+    end
+    redirect_to @article
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article

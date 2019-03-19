@@ -19,4 +19,8 @@ class ArticlePolicy < ApplicationPolicy
     true
   end
 
+  def like?
+    create?
+  end
+
 end
