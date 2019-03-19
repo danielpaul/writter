@@ -4,7 +4,7 @@ version: v1.0
 # Name your pipeline. In case you connect multiple pipelines with promotions,
 # the name will help you differentiate between, for example, a CI build phase
 # and delivery phases.
-name: Writter - Rails 5 app
+name: Writter
 
 # An agent defines the environment in which your code runs.
 # It is a combination of one of available machine types and operating
@@ -36,7 +36,7 @@ blocks:
           # Read about caching: https://docs.semaphoreci.com/article/54-toolbox-reference#cache
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           # Set Ruby version:
-          - sem-version ruby 2.6.0
+          - sem-version ruby 2.6.1
           - bundle install --deployment -j 4 --path vendor/bundle
           # Store the latest version of dependencies in cache,
           # to be used in next blocks and future workflows:
@@ -53,13 +53,20 @@ blocks:
             # restored, but generally this is not the case with other package
             # managers. Installation will not actually run and command will
             # finish quickly:
-            - sem-version ruby 2.6.0
+            - sem-version ruby 2.6.1
             - bundle install --deployment --path vendor/bundle
             - bundle exec rubocop
             - bundle exec brakeman
 
   - name: Unit tests
     task:
+      env_vars:
+        # Matches the configuration used in sem-service
+        - name: DATABASE_URL
+          value: postgresql://postgres@localhost/test?encoding=utf8
+        - name: RAILS_ENV
+          value: test
+
       # This block runs two jobs in parallel and they both share common
       # setup steps. We can group them in a prologue.
       # See https://docs.semaphoreci.com/article/50-pipeline-yaml#prologue
@@ -70,7 +77,7 @@ blocks:
           # Start Postgres database service.
           # See https://docs.semaphoreci.com/article/54-toolbox-reference#sem-service
           - sem-service start postgres
-          - sem-version ruby 2.6.0
+          - sem-version ruby 2.6.1
           - bundle install --deployment --path vendor/bundle
           - bundle exec rake db:setup
 
@@ -89,12 +96,19 @@ blocks:
   # See https://docs.semaphoreci.com/article/50-pipeline-yaml#agent-in-task
   - name: Integration tests
     task:
+      env_vars:
+        # Matches the configuration used in sem-service
+        - name: DATABASE_URL
+          value: postgresql://postgres@localhost/test?encoding=utf8
+        - name: RAILS_ENV
+          value: test
+
       prologue:
         commands:
           - checkout
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           - sem-service start postgres
-          - sem-version ruby 2.6.0
+          - sem-version ruby 2.6.1
           - bundle install --deployment --path vendor/bundle
           - bundle exec rake db:setup
 
