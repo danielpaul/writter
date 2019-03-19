@@ -3,22 +3,27 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   after_action :verify_authorized, except: :index
 
+
   def index
+    set_meta_tags title: 'Articles'
     @articles = Article.all
     authorize @articles
   end
 
   def show
+    set_meta_tags @article
   end
 
   # GET /articles/new
   def new
+    set_meta_tags title: 'New Article'
     @article = current_user.articles.new
     authorize @article
   end
 
   # GET /articles/1/edit
   def edit
+    set_meta_tags title: 'Edit ' + @article.title
   end
 
   # POST /articles

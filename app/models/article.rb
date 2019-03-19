@@ -1,4 +1,10 @@
 class Article < ApplicationRecord
+  def to_meta_tags
+    {
+      title: title,
+      description: text,
+    }
+  end
   belongs_to :user
 
   validates :title, :text, :user_id, presence: true
