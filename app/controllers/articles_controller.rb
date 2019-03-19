@@ -5,9 +5,9 @@ class ArticlesController < ApplicationController
 
 
   def index
-    set_meta_tags title: 'Articles'
     @articles = Article.all
     authorize @articles
+    set_meta_tags title: 'Articles'
   end
 
   def show
@@ -16,9 +16,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    set_meta_tags title: 'New Article'
     @article = current_user.articles.new
     authorize @article
+    set_meta_tags title: 'New Article'
   end
 
   # GET /articles/1/edit
