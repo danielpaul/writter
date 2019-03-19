@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   def destroy
     set_comment
     authorize @comment
-    
+
     @comment.destroy
     redirect_to @commentable, notice: 'comment was successfully destroyed.'
   end
