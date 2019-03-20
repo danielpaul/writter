@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   include Sluggable
 
+  paginates_per 5
+
   belongs_to :user
 
   validates :title, :text, :user_id, presence: true
