@@ -1,0 +1,6 @@
+%h3 Comments
+- commentable.comments.each do |comment|
+  .well
+    = comment.body
+    - if current_user == comment.user || current_user == article.user
+      = link_to 'Delete', [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' }
