@@ -1,32 +1,35 @@
 class PublicationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  after_action :verify_authorized
 
   def index
     @publications = Publication.all
-    #authorize @articles
+    authorize @publications
     #set_meta_tags title: 'Articles'
   end
 
   def show
+      authorize @publication
   end
 
   # GET /articles/new
   def new
     @publication = current_user.publications.new
-    #authorize @article
+    authorize @publication
     #set_meta_tags title: 'New Article'
   end
 
   # GET /articles/1/edit
   def edit
+      authorize @publication
     #set_meta_tags title: "Edit #{@article.title}"
   end
 
   # POST /articles
   def create
     @publication = current_user.publications.new(publication_params)
-    #authorize @article
+    authorize @publication
 
     if @publication.save
       redirect_to @publication, notice: 'Article was successfully created.'
@@ -36,6 +39,7 @@ class PublicationsController < ApplicationController
   end
 
   def update
+      authorize @publication
       if @publication.update(publication_params)
         redirect_to @publication, notice: 'Article was successfully updated.'
       else
@@ -44,6 +48,7 @@ class PublicationsController < ApplicationController
   end
 
   def destroy
+    authorize @publication
     @publication.destroy
     redirect_to publications_url, notice: 'Article was successfully destroyed.'
   end
