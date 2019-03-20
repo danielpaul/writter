@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :articles
+  resources :articles do
+    resources :comments, module: :articles, only: [:create, :destroy]
+  end
 
   root to: 'articles#index'
 

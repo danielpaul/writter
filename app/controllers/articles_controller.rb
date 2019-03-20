@@ -3,23 +3,28 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   after_action :verify_authorized, except: :index
 
+
   def index
-    @articles = Article.all
+    @articles = Article.all.page(params[:page])
     authorize @articles
+    set_meta_tags title: 'Articles'
   end
 
   def show
     impressionist(@article)
+    set_meta_tags @article
   end
 
   # GET /articles/new
   def new
     @article = current_user.articles.new
     authorize @article
+    set_meta_tags title: 'New Article'
   end
 
   # GET /articles/1/edit
   def edit
+    set_meta_tags title: "Edit #{@article.title}"
   end
 
   # POST /articles
@@ -50,7 +55,11 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find_by_hash_id!(params[:id])
+      @article = Article.friendly.find(params[:id])
+      if @article.hash_id != params[:id]
+        redirect_to action: :show, id: @article.hash_id, status: 301
+      end
+
       authorize @article
     end
 

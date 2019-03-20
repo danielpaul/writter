@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   include Sluggable
+  include Commentable
 
   is_impressionable
 
@@ -14,5 +15,12 @@ class Article < ApplicationRecord
     if user.articles.count == 1
       ArticlesMailer.first_article(self.id).deliver_later
     end
+  end
+
+  def to_meta_tags
+    {
+      title: title,
+      description: text.truncate(300),
+    }
   end
 end
