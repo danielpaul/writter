@@ -3,6 +3,6 @@ class Articles::CommentsController < CommentsController
 
   private
   def set_commentable
-    @commentable = Article.find(params[:article_id])
+    @commentable = Article.find_by_hash_id!(params[:article_id])
   end
 end
