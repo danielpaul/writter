@@ -13,6 +13,8 @@
             = link_to 'Terms', page_path('terms'), class: 'nav-link'
           %li.nav-item
             = link_to 'Privacy Policy', page_path('privacy'), class: 'nav-link'
+          %li= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path
+
 
 
 
