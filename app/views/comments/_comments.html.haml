@@ -1,6 +1,0 @@
-%h3 Comments
-- commentable.comments.each do |comment|
-  .well
-    = comment.body
-    - if policy(comment).destroy?
-      = link_to 'Delete', [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' }

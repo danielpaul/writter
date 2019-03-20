@@ -1,4 +1,10 @@
 class ApplicationPolicy
+  attr_reader :user, :article
+
+  def initialize(user, article)
+    @user = user
+    @article = article
+  end
 
   def index?
     false
