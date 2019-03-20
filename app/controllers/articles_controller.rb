@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.all
+    @articles = Article.all.page(params[:page])
     authorize @articles
     set_meta_tags title: 'Articles'
   end
