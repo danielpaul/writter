@@ -42,7 +42,7 @@
             21
 
         %h1 #{@article.title}
-        =@article.impressionist_count(filter: :session_hash)
+        %h6 page views: #{@article.impressionist_count(filter: :session_hash)}
 
         .d-flex.align-items-center
           -# TODO: link to user profile
