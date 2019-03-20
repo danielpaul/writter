@@ -2,6 +2,8 @@ class Article < ApplicationRecord
   include Sluggable
   include Commentable
 
+  is_impressionable
+
   belongs_to :user
 
   validates :title, :text, :user_id, presence: true

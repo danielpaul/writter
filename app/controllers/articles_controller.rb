@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    impressionist(@article)
     set_meta_tags @article
   end
 
