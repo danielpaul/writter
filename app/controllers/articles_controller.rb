@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find
+    set_article
     impressionist(@article)
   end
 
