@@ -379,6 +379,7 @@ DEPENDENCIES
   high_voltage (~> 3.1)
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari
   letter_opener
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
