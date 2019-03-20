@@ -53,6 +53,8 @@ gem 'haml-rails', '~> 2.0'
 
 gem 'high_voltage', '~> 3.1'
 
+gem 'meta-tags'
+
 gem 'friendly_id', '~> 5.2.4'
 
 group :development, :test do

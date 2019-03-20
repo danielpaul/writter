@@ -13,4 +13,11 @@ class Article < ApplicationRecord
       ArticlesMailer.first_article(self.id).deliver_later
     end
   end
+
+  def to_meta_tags
+    {
+      title: title,
+      description: text.truncate(300),
+    }
+  end
 end
