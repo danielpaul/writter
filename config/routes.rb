@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :comments, module: :articles, only: [:create, :destroy]
   end
 
+  resources :publications
+
   root to: 'articles#index'
 
 end
