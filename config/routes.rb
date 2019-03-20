@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       put 'like', to: 'articles#like'
     end
+    resources :comments, module: :articles, only: [:create, :destroy]
   end
 
   root to: 'articles#index'

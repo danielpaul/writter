@@ -1,0 +1,8 @@
+- if user_signed_in?
+  = form_for [commentable, Comment.new] do |f|
+    .form-group
+      = f.text_area :body, class: "form-control", placeholder: "Add a comment"
+    = f.submit class: "btn btn-primary"
+- else
+  %h4.h3.mb-3.font-weight-normal
+    Please #{link_to "login", new_user_session_path} or #{link_to "Sign Up", new_user_registration_path} to comment.

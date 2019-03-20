@@ -2,13 +2,14 @@ class User < ApplicationRecord
   acts_as_voter
   
   has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable, :confirmable, :trackable,
          :recoverable, :rememberable, :validatable
 
-  validates :first_name, :last_name, :username, presence: true
+  validates :first_name, :last_name, :email, :username , presence: true
   validates :username, :email, uniqueness: {case_sensitive: false}
 
 

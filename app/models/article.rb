@@ -1,5 +1,8 @@
 class Article < ApplicationRecord
   include Sluggable
+  include Commentable
+
+  is_impressionable
 
   acts_as_votable
 

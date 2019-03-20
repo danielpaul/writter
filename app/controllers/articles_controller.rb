@@ -5,12 +5,13 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.all
+    @articles = Article.all.page(params[:page])
     authorize @articles
     set_meta_tags title: 'Articles'
   end
 
   def show
+    impressionist(@article)
     set_meta_tags @article
   end
 
@@ -63,7 +64,11 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find_by_hash_id!(params[:id])
+      @article = Article.friendly.find(params[:id])
+      if @article.hash_id != params[:id]
+        redirect_to action: :show, id: @article.hash_id, status: 301
+      end
+
       authorize @article
     end
 
