@@ -55,6 +55,8 @@ gem 'high_voltage', '~> 3.1'
 
 gem 'meta-tags'
 
+gem 'friendly_id', '~> 5.2.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get
   # a debugger console
