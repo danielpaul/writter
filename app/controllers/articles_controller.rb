@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    set_meta_tags title: 'Edit ' + @article.title
+    set_meta_tags title: "Edit #{@article.title}"
   end
 
   # POST /articles
