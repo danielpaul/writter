@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   include Sluggable
+  include Commentable
 
   belongs_to :user
 

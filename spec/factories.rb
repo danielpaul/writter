@@ -17,3 +17,11 @@ FactoryBot.define do
     text { Faker::Name.last_name }
   end
 end
+
+FactoryBot.define do
+  factory :comment do
+    user
+    association :commentable, factory: :article
+    body { Faker::Quotes::Shakespeare.hamlet_quote }
+  end
+end
