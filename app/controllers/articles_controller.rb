@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :like]
   after_action :verify_authorized, except: :index
 
 
@@ -50,6 +50,15 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
+  end
+
+  def like
+    if current_user.voted_for? @article
+      @article.unliked_by current_user
+    else
+      @article.liked_by current_user
+    end
+    redirect_to @article
   end
 
   private

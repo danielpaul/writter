@@ -32,6 +32,10 @@ RSpec.describe ArticlesController, type: :controller do
     delete :destroy, params: { id: article }
   end
 
+  def put_like
+    put :like, params: { id: article }
+  end
+
   describe "GET #index" do
     it "directs to index" do
       expect(get :index).to render_template("index")
@@ -212,6 +216,38 @@ RSpec.describe ArticlesController, type: :controller do
         end
         it "redirects to articles path" do
           expect(delete_destroy).to redirect_to articles_path
+        end
+      end
+    end
+  end
+  describe "PUT #like" do
+    context "logged out user" do
+      it "redirects to user sign in" do
+        expect(put_like).to redirect_to new_user_session_path
+      end
+      it "does not like article" do
+      expect {
+        put_like
+      }.to change{article.get_likes.size}.by(0)
+      end
+    end
+    context "logged in user" do
+      before(:each) do
+        sign_in user
+      end
+      context "already liked" do
+        it "removes like" do
+          article.liked_by user
+          expect {
+            put_like
+          }.to change{article.get_likes.size}.by(-1)
+        end
+      end
+      context "not liked yet" do
+        it "adds like" do
+          expect {
+            put_like
+          }.to change{article.get_likes.size}.by(1)
         end
       end
     end

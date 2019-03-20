@@ -26,4 +26,8 @@ class ArticlePolicy < ApplicationPolicy
     true
   end
 
+  def like?
+    show?
+  end
+
 end

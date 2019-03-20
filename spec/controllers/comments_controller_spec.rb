@@ -10,11 +10,11 @@ RSpec.describe Articles::CommentsController, type: :controller do
   let(:comment_attributes) { attributes_for(:comment) }
 
   def post_create
-    post :create, params: { article_id: article.id, comment: comment_attributes }
+    post :create, params: { article_id: article.hash_id, comment: comment_attributes }
   end
 
   def delete_destroy
-    delete :destroy, params: { article_id: article.id, id: comment}
+    delete :destroy, params: { article_id: article.hash_id, id: comment}
   end
 
   describe "POST #create" do
@@ -43,7 +43,7 @@ RSpec.describe Articles::CommentsController, type: :controller do
       context "with invalid attributes" do
         it "does not create an comment" do
           expect {
-            post :create, params: { article_id: article.id, comment: attributes_for(:comment, body: nil) }
+            post :create, params: { article_id: article.hash_id, comment: attributes_for(:comment, body: nil) }
           }.to change(Comment, :count).by(0)
         end
       end

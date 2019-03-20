@@ -42,6 +42,10 @@
             21
 
         %h1 #{@article.title}
+        = link_to like_article_path(@article), method: :put do
+          Like
+          \#{@article.get_likes.size}
+
         %h6 page views: #{@article.impressionist_count(filter: :session_hash)}
 
         .d-flex.align-items-center

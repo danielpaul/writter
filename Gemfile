@@ -53,6 +53,8 @@ gem 'haml-rails', '~> 2.0'
 
 gem 'high_voltage', '~> 3.1'
 
+gem 'acts_as_votable', '~> 0.12.0'
+
 gem 'meta-tags'
 
 gem 'friendly_id', '~> 5.2.4'

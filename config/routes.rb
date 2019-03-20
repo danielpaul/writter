@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :articles do
+    member do
+      put 'like', to: 'articles#like'
+    end
     resources :comments, module: :articles, only: [:create, :destroy]
   end
 
