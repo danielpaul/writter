@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     member do
-      put "like", to: "articles#like"
+      put 'like', to: 'articles#like'
     end
   end
 

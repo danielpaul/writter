@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :like]
   after_action :verify_authorized, except: :index
 
   def index
@@ -47,7 +47,6 @@ class ArticlesController < ApplicationController
   end
 
   def like
-    set_article
     if current_user.voted_for? @article
       @article.unliked_by current_user
     else
