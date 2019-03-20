@@ -201,6 +201,9 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
+    notifications (0.6.1)
+      kaminari (>= 0.15)
+      rails (>= 5)
     orm_adapter (0.5.0)
     parallel (1.14.0)
     parser (2.6.0.0)
@@ -388,6 +391,7 @@ DEPENDENCIES
   letter_opener
   listen (>= 3.0.5, < 3.2)
   meta-tags
+  notifications (~> 0.6.0)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   pundit
