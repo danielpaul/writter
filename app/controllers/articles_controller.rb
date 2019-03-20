@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
   after_action :verify_authorized, except: :index
 
   def index
-    @articles = Article.all
+    @articles = Article.order(:title).page(params[:page])
+    #@articles = Article.all
     authorize @articles
   end
 
