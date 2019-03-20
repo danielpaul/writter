@@ -9,6 +9,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find
+    impressionist(@article)
   end
 
   # GET /articles/new
