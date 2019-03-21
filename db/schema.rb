@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_135240) do
+ActiveRecord::Schema.define(version: 2019_03_21_203249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_135240) do
     t.bigint "user_id"
     t.string "hash_id"
     t.bigint "publication_id"
+    t.integer "privacy"
     t.index ["publication_id"], name: "index_articles_on_publication_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
@@ -125,14 +126,14 @@ ActiveRecord::Schema.define(version: 2019_03_21_135240) do
     t.index ["user_id"], name: "index_publications_on_user_id"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "publications_users", force: :cascade do |t|
     t.bigint "publication_id"
-    t.string "type"
+    t.bigint "user_id"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["publication_id"], name: "index_roles_on_publication_id"
-    t.index ["user_id"], name: "index_roles_on_user_id"
+    t.index ["publication_id"], name: "index_publications_users_on_publication_id"
+    t.index ["user_id"], name: "index_publications_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -178,6 +179,6 @@ ActiveRecord::Schema.define(version: 2019_03_21_135240) do
   add_foreign_key "articles", "publications"
   add_foreign_key "articles", "users"
   add_foreign_key "publications", "users"
-  add_foreign_key "roles", "publications"
-  add_foreign_key "roles", "users"
+  add_foreign_key "publications_users", "publications"
+  add_foreign_key "publications_users", "users"
 end
