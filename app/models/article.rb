@@ -10,6 +10,7 @@
 #  user_id        :bigint(8)
 #  hash_id        :string
 #  publication_id :bigint(8)
+#  privacy        :integer
 #
 
 class Article < ApplicationRecord
