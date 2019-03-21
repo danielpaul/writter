@@ -15,5 +15,6 @@
     = form.label :text
     %br/
     = form.text_area :text
+    = form.select(:privacy, Article.privacy.keys.map {|privacy| [privacy.titleize,privacy]})
   .actions
     = form.submit

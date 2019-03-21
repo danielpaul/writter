@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  enum privacy: {draft: 0, onlyme: 1, unlisted: 2, everyone: 3}
+
   include Sluggable
   include Commentable
 
