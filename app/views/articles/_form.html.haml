@@ -15,5 +15,10 @@
     = form.label :text
     %br/
     = form.text_area :text
+  %p
+    = form.label :publication
+    %br/
+    = select("article", "publication_id", Publication.all.collect {|p| [ p.title, p.id ] }, { include_blank: "None"})
+
   .actions
     = form.submit

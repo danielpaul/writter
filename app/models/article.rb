@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   acts_as_votable
 
   belongs_to :user
-  belongs_to :publication
+  belongs_to :publication, optional: true
 
   validates :title, :text, :user_id, presence: true
 
