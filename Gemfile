@@ -86,6 +86,8 @@ group :development do
   gem 'letter_opener'
 
   gem 'bullet'
+
+  gem 'annotate'
 end
 
 group :test do
