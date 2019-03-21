@@ -15,7 +15,7 @@ class PublicationsController < ApplicationController
 
   # GET /articles/new
   def new
-    @publication = current_user.publications.new
+    @publication = Publication.new
     authorize @publication
     #set_meta_tags title: 'New Article'
   end
@@ -28,7 +28,8 @@ class PublicationsController < ApplicationController
 
   # POST /articles
   def create
-    @publication = current_user.publications.new(publication_params)
+    @publication = Publication.new(publication_params)
+    @publication.users << current_user
     authorize @publication
 
     if @publication.save

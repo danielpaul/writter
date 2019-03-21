@@ -5,7 +5,7 @@
         = pluralize(publication.errors.count, "error")
         prohibited this publication from being saved:
       %ul
-        - article.errors.full_messages.each do |message|
+        - publication.errors.full_messages.each do |message|
           %li= message
   %p
     = form.label :title
@@ -15,5 +15,6 @@
     = form.label :description
     %br/
     = form.text_area :description
+    = form.hidden_field :user_id, value: current_user.id
   .actions
     = form.submit

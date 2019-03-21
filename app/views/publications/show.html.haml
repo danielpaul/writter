@@ -31,3 +31,8 @@
       .col-lg-10.col-xl-8
         %h1 #{@publication.title}
         %p #{@publication.description}
+        %h3 articles in this publication:
+
+        - @publication.articles.each do |a|
+          .well
+            = a.title

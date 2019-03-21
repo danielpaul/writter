@@ -1,7 +1,7 @@
 class Publication < ApplicationRecord
-  belongs_to :user
   has_many :roles
-  has_many :articles, through: :roles
+  has_many :users, through: :roles
+  has_many :articles
 
-  validates :title, :description, :user_id, presence: true
+  validates :title, :description, presence: true
 end
