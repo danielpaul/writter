@@ -82,7 +82,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
-    brakeman (4.4.0)
+    brakeman (4.5.0)
     builder (3.2.3)
     bullet (5.9.0)
       activesupport (>= 3.0.0)
@@ -381,9 +381,9 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts_as_votable (~> 0.12.0)
+  annotate
   better_errors
   binding_of_caller
-  annotate
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
   brakeman
