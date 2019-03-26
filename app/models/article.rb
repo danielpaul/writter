@@ -14,8 +14,35 @@
 #
 
 class Article < ApplicationRecord
+  include AASM
   include Sluggable
   include Commentable
+
+  aasm column: :state, enum: true do
+    state :draft, initial: true
+    state :published
+    state :unlisted
+    state :personal
+
+
+    event :published do
+      transitions from: [:draft, :published, :unlisted, :personal], to: :published, after: :send_first_article_email
+    end
+
+    event :draft do
+      transitions from: [:draft, :published, :unlisted, :personal], to: :draft
+    end
+
+    event :personal do
+      transitions from: [:draft, :published, :unlisted, :personal], to: :personal
+    end
+
+    event :unlisted do
+      transitions from: [:draft, :published, :unlisted, :personal], to: :unlisted
+    end
+  end
+
+  enum state: { draft: 0, published: 1, unlisted: 2, personal: 3 }
 
   is_impressionable
 
@@ -25,11 +52,9 @@ class Article < ApplicationRecord
 
   validates :title, :text, :user_id, presence: true
 
-  after_create :send_first_article_email
-
 
   def send_first_article_email
-    if user.articles.count == 1
+    if user.articles.where(state: :published).count == 1
       ArticlesMailer.first_article(self.id).deliver_later
     end
   end

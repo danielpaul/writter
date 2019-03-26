@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include AASM
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy, :like]
   after_action :verify_authorized, except: :index
@@ -74,6 +75,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :text)
+      params.require(:article).permit(:title, :text, :state)
     end
 end
