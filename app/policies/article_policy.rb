@@ -27,7 +27,7 @@ class ArticlePolicy < ApplicationPolicy
     if @user == @article.user
       true
     else
-      @article.pub?
+      @article.published?
     end
   end
 
