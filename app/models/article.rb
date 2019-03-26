@@ -15,6 +15,8 @@
 
 class Article < ApplicationRecord
   include AASM
+  include Sluggable
+  include Commentable
 
   aasm do
     state :draft, initial: true
@@ -33,11 +35,11 @@ class Article < ApplicationRecord
     end
 
     event :set_unlisted do
-      transitions from: [:draft, :pub, :priv, :unlisted], to: :unlisted 
+      transitions from: [:draft, :pub, :priv, :unlisted], to: :unlisted
     end
   end
-  include Sluggable
-  include Commentable
+
+  enum state: [:draft, :published, :unlisted, :personal]
 
   is_impressionable
 

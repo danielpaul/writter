@@ -15,5 +15,8 @@
     = form.label :text
     %br/
     = form.text_area :text
+
+    = form.select(:state, Article.states.keys.map {|state| [state.titleize,state]})
+
   .actions
     = form.submit
