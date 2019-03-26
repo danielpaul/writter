@@ -16,5 +16,8 @@
     %br/
     = form.text_area :description
     = form.hidden_field :user_id, value: current_user.id
+
+    = form.select :role, PublicationUser.roles.keys.map { |role| [role.titleize, role]}, {include_blank: false}
+
   .actions
     = form.submit

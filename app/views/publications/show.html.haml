@@ -36,3 +36,25 @@
         - @publication.articles.each do |a|
           .well
             = a.title
+
+        %h3 Add a user to this publication
+        =form_for @publication_user do |form|
+          - if publication_user.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(publication_user.errors.count, "error")
+                prohibited this publication from being saved:
+              %ul
+                - publication_user.errors.full_messages.each do |message|
+                  %li= message
+          %p
+            = form.label :email
+            %br/
+            = form.text_field :email
+          %p
+
+            = form.select :role, PublicationUser.roles.keys.map { |role| [role.titleize, role]}, {include_blank: false}
+
+          .actions
+            = form.submit
+        = link_to 'Back', publications_path

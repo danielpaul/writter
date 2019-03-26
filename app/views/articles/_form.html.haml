@@ -18,7 +18,6 @@
   %p
     = form.label :publication
     %br/
-    = select("article", "publication_id", current_user.publications.collect {|p| [ p.title, p.id ] }, { include_blank: "None"})
 
   .actions
     = form.submit

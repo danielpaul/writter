@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
+  resource :user do
+    resources :publications_users
+  end
   resources :articles do
     member do
       put 'like', to: 'articles#like'
@@ -12,7 +15,11 @@ Rails.application.routes.draw do
     resources :comments, module: :articles, only: [:create, :destroy]
   end
 
-  resources :publications
+  resources :publications do
+    resources :publications_users
+  end
+
+  resource :publications_users
 
   root to: 'articles#index'
 

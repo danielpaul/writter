@@ -29,6 +29,7 @@ class PublicationsController < ApplicationController
   # POST /articles
   def create
     @publication = current_user.publications.new(publication_params)
+    @publication.users << current_user
     authorize @publication
 
     if @publication.save
