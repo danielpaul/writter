@@ -14,6 +14,28 @@
 #
 
 class Article < ApplicationRecord
+  include AASM
+
+  aasm do
+    state :draft, initial: true
+    state :pub, :priv, :unlisted
+
+    event :set_public do
+      transitions from: [:draft, :pub, :priv, :unlisted], to: :pub
+    end
+
+    event :set_draft do
+      transitions from: [:draft, :pub, :priv, :unlisted], to: :draft
+    end
+
+    event :set_private do
+      transitions from: [:draft, :pub, :priv, :unlisted], to: :priv
+    end
+
+    event :set_unlisted do
+      transitions from: [:draft, :pub, :priv, :unlisted], to: :unlisted 
+    end
+  end
   include Sluggable
   include Commentable
 

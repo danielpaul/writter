@@ -1,4 +1,5 @@
 class ArticlePolicy < ApplicationPolicy
+  include AASM
   attr_reader :user, :article
 
   def initialize(user, article)
@@ -23,7 +24,11 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    if @user == @article.user
+      true
+    else
+      @article.pub?
+    end
   end
 
   def like?
