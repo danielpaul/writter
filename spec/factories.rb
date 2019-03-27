@@ -29,7 +29,9 @@ end
 FactoryBot.define do
   factory :notification do
     user
-    association :actor, factory: :comment
-    body { Faker::Quotes::Shakespeare.hamlet_quote }
+    association :actor, factory: :user
+    association :target, factory: :comment
+    association :second_target, factory: :article
+    notify_type {'comment'}
   end
 end
