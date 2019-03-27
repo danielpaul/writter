@@ -15,7 +15,7 @@ class PublicationPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && user == publication.user
+    user.present? && user == publication.users
   end
 
   def destroy?
