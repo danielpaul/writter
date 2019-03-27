@@ -25,3 +25,11 @@ FactoryBot.define do
     body { Faker::Quotes::Shakespeare.hamlet_quote }
   end
 end
+
+FactoryBot.define do
+  factory :notification do
+    user
+    association :actor, factory: :comment
+    body { Faker::Quotes::Shakespeare.hamlet_quote }
+  end
+end

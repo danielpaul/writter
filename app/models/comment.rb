@@ -7,6 +7,10 @@ class Comment < ApplicationRecord
   validates :body, :user_id, :commentable_type, :commentable_id,  presence: true
   validates_length_of :body, maximum: 1000, allow_blank: false
 
+  def content
+    self.body
+  end
+
   def create_notifications
     if self.user != self.commentable.user
       Notification.create do |notification|

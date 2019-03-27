@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     resources :comments, module: :articles, only: [:create, :destroy]
   end
 
-  mount Notifications::Engine => "/notifications"
+  # mount Notifications::Engine => "/notifications"
+  resources :notifications, only: [:index, :destroy, :show] do
+    collection do
+      get 'mark_as_read'
+    end
+  end
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
