@@ -13,6 +13,10 @@ RSpec.describe NotificationsController, type: :controller do
     delete :destroy, params: { id: notification }
   end
 
+  def mark_as_read
+    get :mark_as_read
+  end
+
 
   describe "GET #index" do
     context "signed in user" do
@@ -61,12 +65,12 @@ RSpec.describe NotificationsController, type: :controller do
     context "signed in user" do
       it "marks all as read" do
         sign_in user
-        expect(mark_as_read).to redirect_to article_path(notification.second_target)
+        expect(mark_as_read).to redirect_to notifications_path
       end
     end
     context "signed out user" do
       it "redirects to sign in" do
-        expect(notifications.mark_as_read).to redirect_to new_user_session_path
+        expect(mark_as_read).to redirect_to new_user_session_path
       end
     end
   end
