@@ -1,0 +1,14 @@
+.notifications.row
+  .heading.clearfix
+    = t('notifications.all_notifications')
+    %span.pull-xs-right
+      = link_to t('notifications.read_all'), mark_as_read_notifications_path, class: 'btn btn-sm btn-secondary'
+  .list
+    - if @notifications.blank?
+      .no-records= t('notifications.no_records')
+    - else
+      - @notification_groups.each do |group, notifications|
+        .notification-group
+          .group-title= group
+          = render notifications
+  = paginate @notifications

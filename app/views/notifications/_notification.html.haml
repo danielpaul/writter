@@ -1,0 +1,13 @@
+= cache(['notifications', Notifications::VERSION, notification]) do
+  %div{:class => "media notification notification-#{notification.notify_type}#{' unread' unless notification.read?}", "data-id" => "#{notification.id}", :id => "notification-#{notification.id}"}
+    %span.pull-xs-right
+      = link_to 'Destroy', notification, method: :delete, class: 'btn btn-sm btn-secondary'
+    %span.pull-xs-right
+      = link_to 'Show', notification, class: 'btn btn-sm btn-secondary'
+    .media-left
+      - if notification.actor_profile_url && notification.actor_avatar_url
+        = link_to image_tag(notification.actor_avatar_url), notification.actor_profile_url, title: notification.actor_name, class: 'user-avatar'
+    .media-body
+      = render partial: "/notifications/#{notification.notify_type}", locals: { notification: notification }
+    .media-right
+      = l notification.created_at, format: :short
