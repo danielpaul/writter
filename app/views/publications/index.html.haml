@@ -1,0 +1,15 @@
+%p#notice= notice
+%h1 Publications
+%p= link_to 'view articles', articles_url
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"}
+  %tbody
+    - @publications.each do |publication|
+      %tr
+        %td= link_to publication.title, publication
+        %td= link_to 'Edit', edit_publication_path(publication)
+        %td= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Publication', new_publication_path
