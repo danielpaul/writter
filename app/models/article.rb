@@ -40,4 +40,9 @@ class Article < ApplicationRecord
       description: text.truncate(300),
     }
   end
+
+
+  def content
+    self.title
+  end
 end
